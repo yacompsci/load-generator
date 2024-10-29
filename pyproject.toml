@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "inference-load-generator"
+version = "0.1.0"
+description = ""
+authors = ["Cyril Kondratenko <kkn1993@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+transformers = "^4.45.2"
+fastapi = {extras = ["standard"], version = "^0.115.0"}
+aiohttp = "^3.10.9"
+prometheus-client = "^0.21.0"
+boto3 = "^1.35.50"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
