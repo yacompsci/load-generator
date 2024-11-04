@@ -1,3 +1,4 @@
+import asyncio
 from typing import Optional, Dict, Any, List, Literal
 from fastapi import FastAPI, HTTPException, BackgroundTasks
 from prometheus_client import make_asgi_app
@@ -24,7 +25,7 @@ metrics = Metrics(
 @app.on_event("startup")
 async def startup_event():
     global metrics
-    await run_benchmarks(metrics)
+    asyncio.create_task(run_benchmarks(metrics))
 
 app.mount("/metrics", make_asgi_app())
 
