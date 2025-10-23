@@ -43,6 +43,9 @@ def save_result(result_dict: Dict[str, Any], file_name: str):
         print(f"Failed to upload file: {e}")
 
 def get_instance_name():
+    if "INSTANCE_NAME" in os.environ:
+        return os.getenv("INSTANCE_NAME")
+
     k8s_host = os.getenv("KUBERNETES_SERVICE_HOST")
     k8s_port = os.getenv("KUBERNETES_SERVICE_PORT")
     namespace = os.getenv("JOB_NAMESPACE", "test-job")
