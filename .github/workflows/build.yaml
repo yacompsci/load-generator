@@ -9,6 +9,11 @@ jobs:
       contents: read
       packages: write
     steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+        with:
+          lfs: true
+
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v3
         with:
@@ -27,6 +32,7 @@ jobs:
         env:
           TOOL_NAME: load-generator
         with:
+          context: .
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ env.TOOL_NAME }}:latest
