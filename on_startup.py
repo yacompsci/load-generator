@@ -1,4 +1,6 @@
 import os
+import traceback
+
 import requests
 import socket
 import time
@@ -87,6 +89,7 @@ async def run_benchmarks(metrics: Metrics):
             )
         except Exception as e:
             print(f"Error running benchmark: {e}")
+            traceback.print_exc()
 
     specs = get_specs() or SPECS
     for spec in specs:
