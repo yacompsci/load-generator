@@ -27,7 +27,6 @@ jobs:
         env:
           TOOL_NAME: load-generator
         with:
-          target: ${{ env.TOOL_NAME }}
           push: true
           tags: |
             ghcr.io/${{ github.repository_owner }}/${{ env.TOOL_NAME }}:latest
